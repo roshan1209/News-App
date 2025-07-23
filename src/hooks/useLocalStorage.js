@@ -34,8 +34,6 @@ export const useLocalStorage = (storageKey = 'articles') => {
             if (!stored) return null;
 
             const parsed = JSON.parse(stored);
-            console.log(encodedKey);
-            console.log(parsed);
             return parsed[encodedKey] || null;
         } catch (err) {
             console.error('Error reading from localStorage:', err);

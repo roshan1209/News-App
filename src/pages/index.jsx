@@ -11,8 +11,8 @@ export default function Home() {
   });
 
   return (
-      <div className='bg-cray-200'>
-        <NewsList articles={articles} />
+      <div className='bg-cray-200 h-screen'>
+          {!loading && <NewsList articles={articles} /> }
         <div ref={loaderRef} className="text-center py-8">
           {loading && <Loader/>}
         </div>

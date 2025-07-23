@@ -1,18 +1,19 @@
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import {useEffect, useRef, useState} from 'react';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
+import Loader from "@/components/Loader";
 
 export default function ArticleDetail() {
     const router = useRouter();
     const { getArticle } = useLocalStorage();
     const [article, setArticle] = useState(null);
+    const loaderRef = useRef();
 
     useEffect(() => {
         if (!router.isReady) return;
 
         const key = encodeURIComponent(router.query.id);
         const savedArticle = getArticle(key);
-        console.log(savedArticle);
         if (savedArticle) {
             setArticle(savedArticle);
         } else {
@@ -20,11 +21,14 @@ export default function ArticleDetail() {
         }
     }, [router.isReady]);
 
-    if (!article) return <p>Loading article...</p>;
-    console.log(article);
+    if (!article) return (
+        <div ref={loaderRef} className="text-center py-8">
+            <Loader/>
+        </div>
+    );
 
     return (
-        <div className="max-w-2xl mx-auto p-4">
+        <div className="max-w-2xl mx-auto p-4 h-screen">
             <h1 className="text-2xl font-bold">{article.title}</h1>
             <p className="text-sm text-gray-500 my-2">{article.author}</p>
             <p className="text-sm text-gray-500">{article.publishedAt}</p>

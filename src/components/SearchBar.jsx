@@ -7,7 +7,7 @@ export default function SearchBar() {
     const router = useRouter();
 
     const handleSearch = (e) => {
-        e.preventDefault(); // Prevent default form reload
+        e.preventDefault();
         if (query.trim()) {
             router.push(`/search?q=${encodeURIComponent(query)}`);
         }

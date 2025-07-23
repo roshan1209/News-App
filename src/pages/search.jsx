@@ -19,7 +19,7 @@ export default function SearchPage() {
             <div className="flex justify-between items-center mb-4">
                 <h1 className="text-xl font-bold">Search: {query.q}</h1>
             </div>
-            <NewsList articles={articles} />
+            {!loading && <NewsList articles={articles} /> }
             <div ref={loaderRef} className="text-center py-8">
                 {loading && <Loader />}
             </div>
