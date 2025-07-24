@@ -11,7 +11,7 @@ export default function Home() {
   });
 
   return (
-      <div className='bg-cray-200 h-screen'>
+      <div className='p-4 bg-cray-200 min-h-screen'>
           {!loading && <NewsList articles={articles} /> }
         <div ref={loaderRef} className="text-center py-8">
           {loading && <Loader/>}

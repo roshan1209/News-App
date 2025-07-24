@@ -28,7 +28,7 @@ export default function ArticleDetail() {
     );
 
     return (
-        <div className="max-w-2xl mx-auto p-4 h-screen">
+        <div className="max-w-2xl mx-auto p-4 min-h-screen">
             <h1 className="text-2xl font-bold">{article.title}</h1>
             <p className="text-sm text-gray-500 my-2">{article.author}</p>
             <p className="text-sm text-gray-500">{article.publishedAt}</p>
